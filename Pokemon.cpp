@@ -1,33 +1,46 @@
 #include "Pokemon.h"
 #include "Tipos.h"
 
-Pokemon::Pokemon(string nombre, string tipo, int vida, int ataque, int defensa) {
-    this->nombre = nombre;
+Pokemon::Pokemon(string especie, string tipo, int vida, int ataque, int defensa, int ataque_esp, int defensa_esp, string apodo) {
+    this->especie = especie;
+    this->apodo = apodo;
     this->tipo = tipo;
     this->vida = vida;
     this->ataque = ataque;
     this->defensa = defensa;
+    this->ataque_esp = ataque_esp;
+    this->defensa_esp = defensa_esp;
 }
+void Pokemon::setNombre(string nombre) { this->apodo = nombre; } ;
+string Pokemon::getNombre() const { return apodo;};
+
+string Pokemon::getNombreMostrar() const {
+    if (!apodo.empty()) {
+        return apodo+"("+especie+")";
+    }
+    return especie;};
 
 void Pokemon::mostrar() {
-    cout << "\n======================" << endl;
-    cout << nombre << endl;
-    cout << "Tipo: " << tipo << endl;
-    cout << "Vida: " << vida << endl;
-    cout << "Ataque: " << ataque << endl;
-    cout << "Defensa: " << defensa << endl;
-    cout << "======================\n" << endl;
+    cout << "\n============================" << endl;
+    cout << getNombreMostrar() << endl;
+    cout << "Tipo: " << tipo;
+    cout << "\tVida: " << vida << endl;
+    cout << "Ataque: " << ataque;
+    cout << "\tDefensa: " << defensa << endl;
+    cout << "Ataque Especial: " << ataque_esp;
+    cout << "\tDefensa Especial: " << defensa_esp << endl;
+    cout << "============================\n" << endl;
 }
 
 void Pokemon::atacar(Pokemon &objetivo) {
 
     if (vida <= 0) {
-        cout << nombre << " no puede atacar porque esta debilitado." << endl;
+        cout << apodo << " no puede atacar porque esta debilitado." << endl;
         return;
     }
 
     if (objetivo.vida <= 0) {
-        cout << objetivo.nombre << " ya esta debilitado." << endl;
+        cout << objetivo.apodo << " ya esta debilitado." << endl;
         return;
     }
 
@@ -50,8 +63,8 @@ void Pokemon::atacar(Pokemon &objetivo) {
 
     objetivo.recibirDano(dano);
 
-    cout << nombre << " ataca a "
-         << objetivo.nombre
+    cout << apodo << " ataca a "
+         << objetivo.apodo
          << " y causa "
          << dano
          << " de dano." << endl;

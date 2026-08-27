@@ -18,13 +18,14 @@ double Tipos::calcularEfectividad(string atacante, string defensor) {
         return 0.5;
     }
 
-    if (atacante == "Agua" && defensor == "Fuego") {
+    if (atacante == "Agua" && (defensor == "Fuego" || defensor =="Tierra" || defensor == "Roca")) {
         return 2;
     }
 
     if (atacante == "Agua" && defensor == "Planta") {
         return 0.5;
     }
+    
 
     return 1;
 }

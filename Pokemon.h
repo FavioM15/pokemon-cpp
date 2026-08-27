@@ -7,18 +7,26 @@
 using namespace std;
 
 class Pokemon {
-public:
-    string nombre;
+private:
+    string especie;
+    string apodo;
     string tipo;
     int vida;
     int ataque;
     int defensa;
+    int ataque_esp;
+    int defensa_esp;
+public:  
+    Pokemon(string especie, string tipo, int vida, int ataque, int defensa, int ataque_esp, int defensa_esp, string apodo = "");
 
-    Pokemon(string nombre, string tipo, int vida, int ataque, int defensa);
-
+    void setNombre(string nombre);
     void mostrar();
     void atacar(Pokemon &objetivo);
     void recibirDano(int dano);
+    string getNombre() const;
+    string getNombreMostrar() const;
+
+
 };
 
 #endif
