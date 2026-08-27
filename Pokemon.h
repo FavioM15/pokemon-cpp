@@ -1,32 +1,63 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
-#include <iostream>
 #include <string>
-
-using namespace std;
+#include <vector>
+#include "Ataque.h"
 
 class Pokemon {
 private:
-    string especie;
-    string apodo;
-    string tipo;
+    std::string especie;
+    std::string apodo;
+    std::string tipo;
+
     int vida;
+    int vidaMaxima;
     int ataque;
     int defensa;
     int ataque_esp;
     int defensa_esp;
-public:  
-    Pokemon(string especie, string tipo, int vida, int ataque, int defensa, int ataque_esp, int defensa_esp, string apodo = "");
+    int nivel;
 
-    void setNombre(string nombre);
-    void mostrar();
-    void atacar(Pokemon &objetivo);
+    bool debilitado;
+
+    std::vector<Ataque> ataques;
+
+public:
+    Pokemon(
+        std::string especie,
+        std::string tipo,
+        int vida,
+        int ataque,
+        int defensa,
+        int ataque_esp,
+        int defensa_esp,
+        std::string apodo = ""
+    );
+
+    std::string getEspecie() const;
+    std::string getApodo() const;
+    std::string getNombreMostrar() const;
+    std::string getTipo() const;
+
+    int getVida() const;
+    int getVidaMaxima() const;
+    int getAtaque() const;
+    int getDefensa() const;
+
+    bool estaDebilitado() const;
+
+    void setApodo(std::string nuevoApodo);
     void recibirDano(int dano);
-    string getNombre() const;
-    string getNombreMostrar() const;
+    void curar(int cantidad);
 
+    void agregarAtaque(Ataque ataque);
+    void mostrarAtaques() const;
 
+    const std::vector<Ataque>& getAtaques() const;
+
+    void mostrar() const;
+    void atacar(Pokemon& objetivo, int indiceAtaque);
 };
 
 #endif

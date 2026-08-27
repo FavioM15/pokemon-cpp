@@ -3,11 +3,12 @@
 
 #include <string>
 
-using namespace std;
-
 class Tipos {
 public:
-    static double calcularEfectividad(string atacante, string defensor);
+    static double calcularEfectividad(
+        std::string atacante,
+        std::string defensor
+    );
 };
 
 #endif
