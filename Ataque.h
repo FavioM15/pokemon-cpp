@@ -18,11 +18,8 @@ public:
     int getPotencia() const;
     int getPrecision() const;
 
-    int calcularDano(
-        int ataquePokemon,
-        int defensaObjetivo,
-        double efectividad
-    ) const;
+    int calcularDano(int ataquePokemon,int defensaObjetivo,double efectividad) const;
+
 };
 
 #endif

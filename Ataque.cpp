@@ -1,6 +1,7 @@
 #include "Ataque.h"
+using namespace std;
 
-Ataque::Ataque(std::string nombre, std::string tipo, int potencia, int precision) {
+Ataque::Ataque(string nombre, string tipo, int potencia, int precision) {
 
     this->nombre = nombre;
     this->tipo = tipo;
@@ -8,11 +9,11 @@ Ataque::Ataque(std::string nombre, std::string tipo, int potencia, int precision
     this->precision = precision;
 }
 
-std::string Ataque::getNombre() const {
+string Ataque::getNombre() const {
     return nombre;
 }
 
-std::string Ataque::getTipo() const {
+string Ataque::getTipo() const {
     return tipo;
 }
 
@@ -24,18 +25,11 @@ int Ataque::getPrecision() const {
     return precision;
 }
 
-int Ataque::calcularDano(
-    int ataquePokemon,
-    int defensaObjetivo,
-    double efectividad
-) const {
+int Ataque::calcularDano(int ataquePokemon,int defensaObjetivo,double efectividad)const {
 
-    int dano = (ataquePokemon * potencia) /
-               (defensaObjetivo + 10);
-
-    if (dano < 1) {
-        dano = 1;
-    }
+    int dano = (ataquePokemon * potencia) / (defensaObjetivo + 10);
+    
+    if (dano < 1) dano = 1;
 
     dano = (int)(dano * efectividad);
 
